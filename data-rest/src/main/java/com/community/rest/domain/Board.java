@@ -2,6 +2,7 @@ package com.community.rest.domain;
 
 
 import com.community.rest.domain.enums.BoardType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -53,7 +54,7 @@ public class Board implements Serializable {
     @Column
     private LocalDateTime updatedDate;
 
-    @OneToOne(fetch= FetchType.LAZY)
+    @OneToOne
     private User user;
 
     @Builder
@@ -71,7 +72,11 @@ public class Board implements Serializable {
         this.createdDate = LocalDateTime.now();
     }
 
-    public void setUpdatedDateNow() {
+    public void update(Board board) {
+        this.title = board.getTitle();
+        this.subTitle = board.getSubTitle();
+        this.content = board.getContent();
+        this.boardType = board.getBoardType();
         this.updatedDate = LocalDateTime.now();
     }
 }
