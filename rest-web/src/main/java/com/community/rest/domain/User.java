@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class User implements Serializable {
     private String name;
 
     @Column
+    @JsonIgnore
     private String password;
 
     @Column
